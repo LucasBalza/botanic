@@ -56,7 +56,8 @@ Botanic est une application web moderne qui permet de :
 ## 📁 Structure du projet
 
 ```
-botanic/
+
+│botanic/
 ├── backend/                    # Backend .NET API
 │   └── botanic/
 │       ├── Controllers/        # Contrôleurs de l'API
@@ -80,29 +81,30 @@ botanic/
 │       ├── appsettings.json    # Configuration
 │       └── botanic.csproj      # Fichier projet
 ├── frontend/                   # Frontend Angular
-    ├── src/
-    │   ├── app/
-    │   │   ├── components/     # Composants Angular
-    │   │   │   ├── login/
-    │   │   │   ├── plant-list/
-    │   │   │   ├── plant-detail/
-    │   │   │   └── plant-add/
-    │   │   ├── services/       # Services Angular
-    │   │   │   ├── auth.service.ts
-    │   │   │   ├── plant.service.ts
-    │   │   │   └── user.service.ts
-    │   │   ├── models/         # Modèles TypeScript
-    │   │   │   ├── plant.ts
-    │   │   │   └── user.ts
-    │   │   ├── app.module.ts   # Module principal
-    │   │   ├── app-routing.module.ts
-    │   │   └── app.component.ts
-    │   ├── assets/             # Ressources statiques
-    │   ├── styles.css          # Styles globaux
-    │   └── index.html          # Page HTML principale
-    ├── angular.json            # Configuration Angular
-    ├── package.json            # Dépendances npm
-    └── tsconfig.json           # Configuration TypeScript
+│    ├── src/
+│    │   ├── app/
+│    │   │   ├── components/     # Composants Angular
+│    │   │   │   ├── login/
+│    │   │   │   ├── plant-list/
+│    │   │   │   ├── plant-detail/
+│    │   │   │   └── plant-add/
+│    │   │   ├── services/       # Services Angular
+│    │   │   │   ├── auth.service.ts
+│    │   │   │   ├── plant.service.ts
+│    │   │   │   └── user.service.ts
+│    │   │   ├── models/         # Modèles TypeScript
+│    │   │   │   ├── plant.ts
+│    │   │   │   └── user.ts
+│    │   │   ├── app.module.ts   # Module principal
+│    │   │   ├── app-routing.module.ts
+│    │   │   └── app.component.ts
+│    │   ├── assets/             # Ressources statiques
+│    │   ├── styles.css          # Styles globaux
+│    │   └── index.html          # Page HTML principale
+│    ├── angular.json            # Configuration Angular
+│    ├── package.json            # Dépendances npm
+│    └── tsconfig.json           # Configuration TypeScript
+└── README.md                    # Ce fichier
 ```
 
 ## 🚀 Instructions d'installation et d'exécution
@@ -126,7 +128,7 @@ botanic/
 #### 1. Cloner le projet
 
 ```bash
-git clone [URL_DU_REPO]
+git clone https://github.com/LucasBalza/botanic.git
 cd botanic
 ```
 
@@ -300,7 +302,6 @@ Le frontend est configuré pour communiquer avec le backend sur :
 - **Username** : `lucas`
 - **Password** : `password`
 - **Role** : `Administrator`
-
 
 ## 📚 Documentation technique
 
