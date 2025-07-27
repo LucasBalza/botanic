@@ -1,0 +1,79 @@
+<div class="login-container">
+  <div class="login-background">
+    <div class="background-pattern"></div>
+  </div>
+  
+  <div class="login-content">
+    <div class="login-card">
+      <!-- Header -->
+      <div class="login-header">
+        <div class="brand-logo">
+          <i class="fas fa-leaf"></i>
+        </div>
+        <h1 class="login-title">Botanic</h1>
+        <p class="login-subtitle">Connectez-vous à votre catalogue de plantes</p>
+      </div>
+
+      <!-- Formulaire -->
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+        <!-- Nom d'utilisateur -->
+        <div class="form-group">
+          <label for="username" class="form-label">
+            <i class="fas fa-user"></i>Nom d'utilisateur
+          </label>
+          <input 
+            type="text" 
+            id="username"
+            formControlName="username"
+            class="form-control"
+            placeholder="Entrez votre nom d'utilisateur"
+            [class.is-invalid]="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+          <div class="invalid-feedback" *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+            Le nom d'utilisateur est requis
+          </div>
+        </div>
+
+        <!-- Mot de passe -->
+        <div class="form-group">
+          <label for="password" class="form-label">
+            <i class="fas fa-lock"></i>Mot de passe
+          </label>
+          <input 
+            type="password" 
+            id="password"
+            formControlName="password"
+            class="form-control"
+            placeholder="Entrez votre mot de passe"
+            [class.is-invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+          <div class="invalid-feedback" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+            Le mot de passe est requis
+          </div>
+        </div>
+
+        <!-- Message d'erreur -->
+        <div class="alert alert-danger" *ngIf="errorMessage">
+          <i class="fas fa-exclamation-triangle"></i>
+          <span>{{ errorMessage }}</span>
+        </div>
+
+        <!-- Bouton de connexion -->
+        <button 
+          type="submit" 
+          class="btn btn-success btn-full"
+          [disabled]="loginForm.invalid || isLoading">
+          <span class="spinner" *ngIf="isLoading"></span>
+          <i class="fas fa-sign-in-alt" *ngIf="!isLoading"></i>
+          {{ isLoading ? 'Connexion...' : 'Se connecter' }}
+        </button>
+      </form>
+
+      <!-- Footer -->
+      <div class="login-footer">
+        <p class="text-secondary text-center">
+          <i class="fas fa-shield-alt"></i>
+          Connexion sécurisée
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

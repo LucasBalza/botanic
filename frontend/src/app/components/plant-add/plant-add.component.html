@@ -1,0 +1,247 @@
+<div class="add-container">
+  <!-- Header -->
+  <div class="add-header">
+    <div class="container">
+      <div class="flex justify-between items-center">
+        <button class="btn btn-outline-success" (click)="goBack()">
+          <i class="fas fa-arrow-left"></i>Retour
+        </button>
+        <h1 class="add-title">
+          <i class="fas fa-plus-circle"></i>Ajouter une plante
+        </h1>
+        <div></div> <!-- Spacer pour centrer le titre -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenu principal -->
+  <div class="container py-8">
+    <div class="add-form-card">
+      <form [formGroup]="plantForm" (ngSubmit)="onSubmit()" class="add-form">
+        
+        <!-- Informations de base -->
+        <div class="form-section">
+          <h3 class="section-title">
+            <i class="fas fa-info-circle"></i>Informations de base
+          </h3>
+          
+          <div class="grid grid-2">
+            <div class="form-group">
+              <label for="name" class="form-label">
+                <i class="fas fa-tag"></i>Nom de la plante *
+              </label>
+              <input 
+                type="text" 
+                id="name"
+                formControlName="name"
+                class="form-control"
+                placeholder="Ex: Monstera deliciosa"
+                [class.is-invalid]="getFieldError('name')">
+              <div class="invalid-feedback" *ngIf="getFieldError('name')">
+                {{ getFieldError('name') }}
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="scientificName" class="form-label">
+                <i class="fas fa-microscope"></i>Nom scientifique
+              </label>
+              <input 
+                type="text" 
+                id="scientificName"
+                formControlName="scientificName"
+                class="form-control"
+                placeholder="Ex: Monstera deliciosa">
+            </div>
+          </div>
+
+          <div class="grid grid-2">
+            <div class="form-group">
+              <label for="commonName" class="form-label">
+                <i class="fas fa-tag"></i>Nom commun
+              </label>
+              <input 
+                type="text" 
+                id="commonName"
+                formControlName="commonName"
+                class="form-control"
+                placeholder="Ex: Philodendron à feuilles découpées">
+            </div>
+            
+            <div class="form-group">
+              <label for="family" class="form-label">
+                <i class="fas fa-layer-group"></i>Famille
+              </label>
+              <input 
+                type="text" 
+                id="family"
+                formControlName="family"
+                class="form-control"
+                placeholder="Ex: Araceae">
+            </div>
+          </div>
+
+          <div class="grid grid-2">
+            <div class="form-group">
+              <label for="genus" class="form-label">
+                <i class="fas fa-leaf"></i>Genre
+              </label>
+              <input 
+                type="text" 
+                id="genus"
+                formControlName="genus"
+                class="form-control"
+                placeholder="Ex: Monstera">
+            </div>
+            
+            <div class="form-group">
+              <label for="species" class="form-label">
+                <i class="fas fa-seedling"></i>Espèce
+              </label>
+              <input 
+                type="text" 
+                id="species"
+                formControlName="species"
+                class="form-control"
+                placeholder="Ex: deliciosa">
+            </div>
+          </div>
+        </div>
+
+        <!-- Description et soins -->
+        <div class="form-section">
+          <h3 class="section-title">
+            <i class="fas fa-file-alt"></i>Description et soins
+          </h3>
+          
+          <div class="form-group">
+            <label for="description" class="form-label">
+              <i class="fas fa-align-left"></i>Description
+            </label>
+            <textarea 
+              id="description"
+              formControlName="description"
+              class="form-control"
+              rows="3"
+              placeholder="Décrivez la plante, son apparence, ses caractéristiques..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="careInstructions" class="form-label">
+              <i class="fas fa-heart"></i>Instructions de soin
+            </label>
+            <textarea 
+              id="careInstructions"
+              formControlName="careInstructions"
+              class="form-control"
+              rows="4"
+              placeholder="Arrosage, exposition, température, entretien..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="imageUrl" class="form-label">
+              <i class="fas fa-image"></i>URL de l'image
+            </label>
+            <input 
+              type="url" 
+              id="imageUrl"
+              formControlName="imageUrl"
+              class="form-control"
+              placeholder="https://example.com/image.jpg">
+          </div>
+        </div>
+
+        <!-- Propriétés -->
+        <div class="form-section">
+          <h3 class="section-title">
+            <i class="fas fa-check-circle"></i>Propriétés
+          </h3>
+          
+          <div class="properties-grid">
+            <div class="property-item">
+              <div class="form-check">
+                <input 
+                  type="checkbox" 
+                  id="isIndoor"
+                  formControlName="isIndoor"
+                  class="form-check-input">
+                <label class="form-check-label" for="isIndoor">
+                  <i class="fas fa-home"></i>Plante d'intérieur
+                </label>
+              </div>
+            </div>
+            
+            <div class="property-item">
+              <div class="form-check">
+                <input 
+                  type="checkbox" 
+                  id="isOutdoor"
+                  formControlName="isOutdoor"
+                  class="form-check-input">
+                <label class="form-check-label" for="isOutdoor">
+                  <i class="fas fa-tree"></i>Plante d'extérieur
+                </label>
+              </div>
+            </div>
+            
+            <div class="property-item">
+              <div class="form-check">
+                <input 
+                  type="checkbox" 
+                  id="isPerennial"
+                  formControlName="isPerennial"
+                  class="form-check-input">
+                <label class="form-check-label" for="isPerennial">
+                  <i class="fas fa-infinity"></i>Plante vivace
+                </label>
+              </div>
+            </div>
+            
+            <div class="property-item">
+              <div class="form-check">
+                <input 
+                  type="checkbox" 
+                  id="isAnnual"
+                  formControlName="isAnnual"
+                  class="form-check-input">
+                <label class="form-check-label" for="isAnnual">
+                  <i class="fas fa-calendar"></i>Plante annuelle
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Messages -->
+        <div class="alert alert-success" *ngIf="successMessage">
+          <i class="fas fa-check-circle"></i>
+          <span>{{ successMessage }}</span>
+        </div>
+
+        <div class="alert alert-danger" *ngIf="errorMessage">
+          <i class="fas fa-exclamation-triangle"></i>
+          <span>{{ errorMessage }}</span>
+        </div>
+
+        <!-- Boutons d'action -->
+        <div class="form-actions">
+          <button 
+            type="button" 
+            class="btn btn-outline-secondary"
+            (click)="goBack()">
+            <i class="fas fa-times"></i>Annuler
+          </button>
+          
+          <button 
+            type="submit" 
+            class="btn btn-success"
+            [disabled]="plantForm.invalid || isLoading">
+            <span class="spinner" *ngIf="isLoading"></span>
+            <i class="fas fa-save" *ngIf="!isLoading"></i>
+            {{ isLoading ? 'Ajout en cours...' : 'Ajouter la plante' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,130 @@
+<div class="detail-container">
+  <!-- Header avec navigation -->
+  <div class="detail-header">
+    <div class="container">
+      <div class="flex justify-between items-center">
+        <button class="btn btn-outline-success" (click)="goBack()">
+          <i class="fas fa-arrow-left"></i>Retour
+        </button>
+        
+        <div class="header-actions" *ngIf="isLoggedIn()">
+          <button class="btn btn-outline-primary" (click)="toggleEdit()">
+            <i class="fas fa-edit"></i>{{ isEditing ? 'Annuler' : 'Modifier' }}
+          </button>
+          <button class="btn btn-outline-danger" (click)="deletePlant()">
+            <i class="fas fa-trash"></i>Supprimer
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenu principal -->
+  <div class="container py-8">
+    <!-- Loading state -->
+    <div class="loading" *ngIf="isLoading">
+      <div class="loading-spinner"></div>
+      <h4 class="text-success mb-2">Chargement de la plante</h4>
+      <p class="text-secondary">Récupération des détails...</p>
+    </div>
+
+    <!-- Erreur -->
+    <div class="alert alert-danger" *ngIf="errorMessage">
+      <i class="fas fa-exclamation-triangle"></i>
+      <span>{{ errorMessage }}</span>
+    </div>
+
+    <!-- Détails de la plante -->
+    <div class="plant-detail-card" *ngIf="!isLoading && plant">
+      <div class="grid grid-2">
+        <!-- Image -->
+        <div class="detail-image-section">
+          <div class="detail-image-container">
+            <img [src]="plant.imageUrl || 'assets/default-plant.jpg'" 
+                 [alt]="plant.name" 
+                 class="detail-image"
+                 onerror="this.src='assets/default-plant.jpg'">
+            <div class="image-overlay">
+              <div class="overlay-badge">
+                <i class="fas fa-seedling"></i>Plante
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Informations -->
+        <div class="detail-content">
+          <!-- Titre et nom scientifique -->
+          <div class="detail-header-info">
+            <h1 class="detail-title">{{ plant.name }}</h1>
+            <p class="detail-scientific">
+              <i class="fas fa-microscope"></i>{{ plant.scientificName }}
+            </p>
+          </div>
+
+          <!-- Description -->
+          <div class="detail-section" *ngIf="plant.description">
+            <h3 class="section-title">
+              <i class="fas fa-info-circle"></i>Description
+            </h3>
+            <p class="section-content">{{ plant.description }}</p>
+          </div>
+
+          <!-- Instructions de soin -->
+          <div class="detail-section" *ngIf="plant.careInstructions">
+            <h3 class="section-title">
+              <i class="fas fa-heart"></i>Instructions de soin
+            </h3>
+            <p class="section-content">{{ plant.careInstructions }}</p>
+          </div>
+
+          <!-- Caractéristiques -->
+          <div class="detail-section">
+            <h3 class="section-title">
+              <i class="fas fa-tags"></i>Caractéristiques
+            </h3>
+            <div class="characteristics-grid">
+              <div class="characteristic-item" *ngIf="plant.family">
+                <i class="fas fa-layer-group"></i>
+                <span><strong>Famille :</strong> {{ plant.family }}</span>
+              </div>
+              <div class="characteristic-item" *ngIf="plant.genus">
+                <i class="fas fa-leaf"></i>
+                <span><strong>Genre :</strong> {{ plant.genus }}</span>
+              </div>
+              <div class="characteristic-item" *ngIf="plant.species">
+                <i class="fas fa-seedling"></i>
+                <span><strong>Espèce :</strong> {{ plant.species }}</span>
+              </div>
+              <div class="characteristic-item" *ngIf="plant.commonName">
+                <i class="fas fa-tag"></i>
+                <span><strong>Nom commun :</strong> {{ plant.commonName }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Badges -->
+          <div class="detail-section">
+            <h3 class="section-title">
+              <i class="fas fa-check-circle"></i>Propriétés
+            </h3>
+            <div class="badge-group">
+              <span class="badge badge-success" *ngIf="plant.isIndoor">
+                <i class="fas fa-home"></i>Plante d'intérieur
+              </span>
+              <span class="badge badge-warning" *ngIf="plant.isOutdoor">
+                <i class="fas fa-tree"></i>Plante d'extérieur
+              </span>
+              <span class="badge badge-info" *ngIf="plant.isPerennial">
+                <i class="fas fa-infinity"></i>Plante vivace
+              </span>
+              <span class="badge badge-danger" *ngIf="plant.isAnnual">
+                <i class="fas fa-calendar"></i>Plante annuelle
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
