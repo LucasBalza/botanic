@@ -1,0 +1,6 @@
+@botanic_HostAddress = http://localhost:5229
+
+GET {{botanic_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
